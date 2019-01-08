@@ -5,17 +5,16 @@ def listSort(argument):
         print( "List cleared: ", argument )
     except Exception:
         print("Different type elements") 
-    # If elements have the same type you can:   
+    # If elements HAVE the same type you can:   
     def myFunc(e):
         return len(e)
     cars = ['Ford', 'Mitsubishi', 'BMW', 'VW']
     cars.sort(reverse=True, key=myFunc)
     
 def listClear(argument):
-    numsClear = argument
-    print( "List before: ", numsClear )
+    print( "List before: ", argument )
     numsClear.clear()
-    print( "List cleared: ", numsClear )
+    print( "List cleared: ", argument )
 
 def listCopy(argument): 
     print( "List original: ", argument )
@@ -68,6 +67,29 @@ def listFlatten(argument):
     print("Flattened list", flatNums)
     # Numpy.array has that beloved function
     
+def listBasicOps(argument):
+    nums = [1, 2, 3]
+    print("The (+)[1, 2, 3] of: ", argument, " is ", argument + nums)
+    print("The mult by 2 is: ", argument*2)
+
+def listAccesingSlicing(argument):
+    print( "The 3rd elem from back is: ", argument[-3] )
+    print( "Slicing 1:3 is: ", argument[1:3] )
+    print( "\nTelephone matrix (list of lists)..." )
+    nums = [[1,2,3], [4,5,6], [7,8,9]]
+    print( "Selection of [1][1]: ", nums[1][1] )
+    # If I want a column... imposible, nums[1:1][], because
+    # Lists don't keep homogeneous magnitudes in inner lists
+    # To manage multi-dim lists/arrays see NUMPY
+
+def listComprehension(argument):
+    print( "List before: ", argument )
+    # Apply a transformation if a condition is true
+    # [ /output function/ /for VARIABLE in REFERENCESEQUENCE/ /CONDITION/ ]
+    print("List doubled by list comprehension: ", [i*2 for i in argument if type(i) is int])
+    print("Nested List doubled by list comprehension: ",  
+          [[j*2 for j in i if type(j) is int] for i in argument if type(i) is list] )
+    
 # dictionary of functions
 switcher = {
     0: listSort,
@@ -80,7 +102,10 @@ switcher = {
     7: listIndex,
     8: listPopAndRemove,
     9: listReverse,
-    10: listFlatten
+    10: listFlatten,
+    11: listBasicOps,
+    12: listAccesingSlicing,
+    13: listComprehension
 }
 
 def listFunctions( funcSelector, argument ):
@@ -95,10 +120,10 @@ def listFunctions( funcSelector, argument ):
         print("You've introduced a non valid selector")  
         
         
-    TODO: 
-        select
-        slice
-        add lists
-        list mult
-        
-        Built-in function vs C++ stl 
+#     TODO: 
+#         Lists, tuples, arrays and sets
+# Arrays in python are a port/wraper of C arrays, much faster than 
+# lists  and only support homogeneous data but nobody uses them
+
+#         Built-in function vs C++ stl 
+#         Map filter and reduce
